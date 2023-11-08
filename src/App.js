@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes,Route } from 'react-router';
+import Home from './components/Home';
+import CreateMcqSingle from './components/CreateMcqSingle';
+import QuizeList from './components/QuizeList';
+import PlayQuize from './components/PlayQuize';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>      
+    {/* defining the routes */}
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/mcq-single' element={<CreateMcqSingle/>} />
+        <Route path='/quizes' element={<QuizeList/>} />
+        <Route path='/play' element={<PlayQuize/>} />
+      </Routes>
     </div>
+    
   );
 }
 

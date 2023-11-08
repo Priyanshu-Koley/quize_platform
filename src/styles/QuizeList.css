@@ -1,0 +1,123 @@
+
+@import url(https://db.onlinewebfonts.com/c/b21ba61d9223eb35c673041adcb43100?family=BrandonGrotesque-Bold);
+
+
+.quize-top-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.empty-quizes{
+    font-family: "BrandonGrotesque-Bold";
+    align-self: center;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.quize-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.quize-head{
+    font-size: 50px;
+    font-weight: 900;
+    margin: 20px 0px 20px 0px;
+}
+.quize-top a{
+    text-decoration: none;
+    color: white;
+    height: fit-content;
+}
+.create-quize-link{
+    background-color:#1976d2 ;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.inactive td{
+    /* color: #a5a5a5; */
+    opacity: 50%;
+
+}
+.table-container{
+    display: flex;
+    justify-content: center;
+    padding: 10px 50px 10px 50px;
+    
+}
+.table-container-modal{
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.status{
+    width: 65px;
+    font-weight: 500;
+}
+.actions{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0px 5px 0px 5px;
+    padding: 0px;
+    transition: visibility 1s ease-out;
+}
+.actions:hover{
+    border: none;
+    background-color: rgb(242, 240, 240);
+    border-radius: 50%;
+}
+.actions:active{
+    background-color: rgb(228, 227, 227);
+}
+#editBtn{
+    margin: 0px;
+    padding: 0px;
+}
+
+.modal-dlt{
+    font-weight: 500;
+    width: 500px;
+    /* height: 200px; */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 0px;
+    outline: 0px;
+}
+.close-btn{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    cursor: pointer;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+#modal-title-dlt{
+    /* height: 50px; */
+}
+.modal-head-dlt{
+    font-size: 30px;
+
+}
+#modal-description-dlt{
+    padding-top: 35px;
+}
