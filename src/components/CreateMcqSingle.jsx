@@ -459,7 +459,7 @@ function CreateMcqSingle(propsData)
                                 </Button>
                             </div>
 
-                            <div className={isMobile && isModal?'save-mobile':'save'}>
+                            <div className={isMobile && isModal?'save-mobile':isModal?'save-mobile':'save'}>
                                 <div className='sameTitleError helper' id='sameTitleError'>
                                     Same title exists ! Please change the title
                                 </div>
