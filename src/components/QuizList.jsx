@@ -26,7 +26,8 @@ import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
-))(({ theme }) => ({
+))(({ theme }) =>
+({
   width: 38,
   height: 22,
   padding: 0,
@@ -79,7 +80,7 @@ const IOSSwitch = styled((props) => (
 export const QuizeList = (props) => 
 {
   
-    const isModal = Object.keys(props).length !== 0 ? true:false;
+    const isModal = Object.keys(props).length !== 0;
 
 
     const [openDlt, setOpenDlt] = useState(false);
@@ -92,7 +93,7 @@ export const QuizeList = (props) =>
     let noOfNotActive = 0;
     let noOfQuizzes = 0;
     const quizes = useSelector(state=>state.quizes);
-    const dispatch = useDispatch(null);
+    const dispatch = useDispatch();
 
 
     const handleOpenDlt = () => setOpenDlt(true);
@@ -196,7 +197,7 @@ export const QuizeList = (props) =>
                           sx={{ m: 1 }}
                           checked={quize.status}
                           onChange={async (e)=>{
-                            await dispatch(toggleStatus(e.target.checked,i));
+                            dispatch(toggleStatus(e.target.checked, i));
                             // const stats=[...status];
                             // stats.splice(i,1,e.target.checked);
                             // setStatus(stats)
@@ -261,7 +262,7 @@ export const QuizeList = (props) =>
             </div>
             <div id='modal-description-dlt'>
                 <div>
-                  Deleting this quize will result in loosing the quize parmanently and is not recoverable
+                  Deleting this quize will result in loosing the quize permanently and is not recoverable
                 </div>
                 <div>
                 <Button

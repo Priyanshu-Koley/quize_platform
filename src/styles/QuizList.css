@@ -8,7 +8,7 @@
     justify-content: center;
 }
 .empty-quizes{
-    font-family: "BrandonGrotesque-Bold";
+    font-family: "BrandonGrotesque-Bold", serif;
     align-self: center;
     font-size: 30px;
     position: absolute;
@@ -27,7 +27,7 @@
 .quize-head{
     font-size: 50px;
     font-weight: 900;
-    margin: 20px 0px 20px 0px;
+    margin: 20px 0 20px 0;
 }
 .quize-top a{
     text-decoration: none;
@@ -68,8 +68,8 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-    margin: 0px 5px 0px 5px;
-    padding: 0px;
+    margin: 0 5px 0 5px;
+    padding: 0;
     transition: visibility 1s ease-out;
 }
 .actions:hover{
@@ -81,8 +81,8 @@
     background-color: rgb(228, 227, 227);
 }
 #editBtn{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 .modal-dlt{
@@ -100,19 +100,14 @@
     transform: translate(-50%, -50%);
     background-color:rgb(255, 255, 255);
     border-radius: 5px;
-    border: 0px;
-    outline: 0px;
+    border: 0;
+    outline: 0;
 }
 .close-btn{
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
+    padding: 0;
+    border: 0;
     cursor: pointer;
-    margin-bottom: auto;
-    margin-left: auto;
-}
-#modal-title-dlt{
-    /* height: 50px; */
+    margin: 0 0 auto auto;
 }
 .modal-head-dlt{
     font-size: 30px;
