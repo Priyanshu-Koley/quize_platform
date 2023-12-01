@@ -1,6 +1,30 @@
 
 
-@import url(https://db.onlinewebfonts.com/c/b21ba61d9223eb35c673041adcb43100?family=BrandonGrotesque-Bold);
+/* @import url(https://db.onlinewebfonts.com/c/b21ba61d9223eb35c673041adcb43100?family=BrandonGrotesque-Bold); */
+@font-face {
+    font-family: BrandonGrotesque-Bold;
+    src:url(../public/fonts/Brandon_bld.otf);
+}
+@font-face {
+    font-family: BrandonGrotesque-Black;
+    src:url(../public/fonts/Brandon_blk.otf);
+}
+@font-face {
+    font-family: BrandonGrotesque-Light;
+    src:url(../public/fonts/Brandon_light.otf);
+}
+@font-face {
+    font-family: BrandonGrotesque-Medium;
+    src:url(../public/fonts/Brandon_med.otf);
+}
+@font-face {
+    font-family: BrandonGrotesque-Regular;
+    src:url(../public/fonts/Brandon_reg.otf);
+}
+@font-face {
+    font-family: BrandonGrotesque-Thin;
+    src:url(../public/fonts/Brandon_thin.otf);
+}
 
 *{
     font-family: "BrandonGrotesque-Bold",'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
