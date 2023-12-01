@@ -1,13 +1,17 @@
 
 @import url(https://db.onlinewebfonts.com/c/b21ba61d9223eb35c673041adcb43100?family=BrandonGrotesque-Bold);
 
-
-.quize-top-container{
+.fade {
+    opacity: 50%;
+    margin: auto 5px auto 5px;
+    border: 0;
+}
+.quiz-top-container{
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.empty-quizes{
+.empty-quizzes{
     font-family: "BrandonGrotesque-Bold", serif;
     align-self: center;
     font-size: 30px;
@@ -17,24 +21,22 @@
     transform: translate(-50%,-50%);
 }
 
-.quize-top{
+.quiz-top{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 80%;
+
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.quize-head{
+.quiz-head{
     font-size: 50px;
     font-weight: 900;
     margin: 20px 0 20px 0;
 }
-.quize-top a{
-    text-decoration: none;
-    color: white;
-    height: fit-content;
-}
-.create-quize-link{
+.create-quiz-link{
     background-color:#1976d2 ;
     color: white;
     padding: 15px;
@@ -59,10 +61,23 @@
     margin-left: auto;
     margin-right: auto;
 }
-
+.table-container table td{
+    font-size: 20px;
+    font-family: "BrandonGrotesque-Bold";
+}
+.table-container table th{
+    font-size: 25px;
+    font-family: "BrandonGrotesque-Bold";
+}
 .status{
     width: 65px;
     font-weight: 500;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.status-container{
+    height: 96px;
 }
 .actions{
     border: none;
@@ -115,4 +130,67 @@
 }
 #modal-description-dlt{
     padding-top: 35px;
+}
+
+@media only screen and (max-width: 426px) {
+
+    .empty-quizzes{
+        width: 85%;
+        font-size: larger;
+    }
+    .create-quiz-link{
+        padding: 12px;
+        font-size: medium;
+    }
+    .quiz-head{
+        font-size: 30px;
+    }
+    .table-container{
+        padding: 20px;
+    }
+    .table-container table td{
+        font-size: 15px;
+    }
+    .table-container table th{
+        font-size: 20px;
+    }
+    .modal-dlt{
+        width: 98vw;
+        font-size: small;
+    }
+    .modal-head-dlt{
+        font-size: large;
+    }
+    .modal-dlt button{
+        font-size: small;
+    }
+}
+
+@media only screen and (max-width: 377px) {
+
+    .create-quiz-link{
+        padding: 10px;
+        font-size: medium;
+    }
+    .quiz-top{
+        width: 90%;
+    }
+
+}
+@media only screen and (max-width: 325px) {
+
+    .empty-quizzes{
+        width: 85%;
+        font-size: large;
+    }
+    .quiz-head{
+        font-size: 23px;
+    }
+    .table-container{
+        padding: 10px;
+    }
+    .create-quiz-link{
+        padding: 10px;
+        font-size: small;
+    }
 }

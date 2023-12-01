@@ -1,8 +1,6 @@
 .body{
     display: flex;
     justify-content: space-around;
-    /* height: calc(100vh - 77px);
-    align-items: center; */
     flex-wrap: wrap;
     padding: 50px 100px 50px 100px;
 }
@@ -18,7 +16,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
 }
-.my-quizesH{
+.my-quizzesH{
     width: 400px;
     height: 250px;
     position: relative;
@@ -45,7 +43,7 @@
 .create:hover .b-image-create{
     transform: translateX(20px)  scale(1.15);
 }
-.my-quizesH:hover .b-image-quize{
+.my-quizzesH:hover .b-image-quiz{
     transform: translateX(20px) scale(1.15);
 }
 .play:hover .b-image-play{
@@ -62,7 +60,7 @@
     transition: all 1s;
     
 }
-.b-image-quize{
+.b-image-quiz{
     
     width: 330px;
     height: 210px;
@@ -111,8 +109,8 @@
     background-color:rgb(255, 255, 255);
     border-radius: 5px;
     padding: 20px;
-    border: 0px;
-    outline: 0px;
+    border: 0;
+    outline: 0;
 }
 
 .types{
@@ -133,18 +131,16 @@
 }
 #modalH-title{
     margin-left: 10px;
-    margin-right: 0px;
+    margin-right: 0;
     
     display: flex;
     justify-content: space-between;
 }
 #modalH-title button{
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
+    padding: 0;
+    border: 0;
     cursor: pointer;
-    margin-bottom: auto;
-    margin-left: auto;
+    margin: 0 0 auto auto;
     background-color: transparent;
 }
 #modalH-title span{
@@ -158,50 +154,15 @@
     font-weight: 600;
 }
 .modalH:focus-visible{
-    border: 0px;
-    outline: 0px;
-}
-
-.modalPlay{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    background-color:rgb(255, 255, 255);
-    border-radius: 5px;
-    padding: 10px;
-    border: 0px;
-    outline: 0px;
-    overflow-y: scroll;
-}
-#modalPlay-title{
-    margin-left: 10px;
-    margin-right: 0px;
-    
-    display: flex;
-    justify-content: space-between;
-}
-#modalPlay-title button{
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
-    cursor: pointer;
-    margin-bottom: auto;
-    margin-left: auto;
-    background-color: transparent;
-}
-#modalPlay-title span{
-    padding-top: 10px;
-    margin-bottom: 20px;
-    font-size: 40px;
-    font-weight: 900;
+    border: 0;
+    outline: 0;
 }
 
 
-@media only screen and (max-width: 600px) {
-    .create,.my-quizesH,.play{
+
+
+@media only screen and (max-width: 770px) {
+    .create,.my-quizzesH,.play{
         width: 300px;
         height: 187px;
     }
@@ -209,7 +170,7 @@
         width: 200px;
         height: 150px;
     }
-    .b-image-quize{
+    .b-image-quiz{
         width: 230px;
         height: 150px;
         
@@ -219,8 +180,6 @@
 
     }
     .c-text{
-        top: 50%;
-        transform: translate(-50%,-50%);
         font-size: 20px;
     }
     .modalH{
@@ -228,8 +187,8 @@
     }
 }
 
-@media only screen and (max-width: 350px) {
-    .create,.my-quizesH,.play{
+@media only screen and (max-width: 375px) {
+    .create,.my-quizzesH,.play{
         width: 250px;
         height: 170px;
     }
@@ -237,7 +196,7 @@
         width: 200px;
         height: 150px;
     }
-    .b-image-quize{
+    .b-image-quiz{
         width: 230px;
         height: 150px;
         
@@ -249,26 +208,7 @@
     .c-text{
         font-size: 17px;
     }
-}
-@media only screen and (max-width: 300px) {
-    .create,.my-quizesH,.play{
-        width: 190px;
-        height: 130px;
-    }
-    .b-image-create{
-        width: 160px;
-        height: 120px;
-    }
-    .b-image-quize{
-        width: 190px;
-        height: 120px;
-        
-    }
-    .b-image-play{
-        width: 160px;
-
-    }
-    .c-text{
-        font-size: 17px;
+    .body{
+        padding-top: 15px;
     }
 }

@@ -1,22 +1,27 @@
+import '../styles/Home.css';
 import React from 'react';
 import Nav from './Nav';
 import PlayList from './PlayList';
+import create from '../images/create.png';
+import quizzes from '../images/quizzes.png';
+import play from '../images/play.jpg';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
-import '../styles/Home.css';
-import create from '../images/create.png';
-import quizes from '../images/quizzes.png';
-import play from '../images/play.jpg';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
+// page variable to store the page no [1=>Home, 2=>Quiz List]
 const page=1;
+
 const Home = ()=>{
 
-    const [open, setOpen] = React.useState(false);
+    // flag for question type selection modal
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     
-    const [openPlay, setOpenPlay] = React.useState(false);
+    // flag for playable quizzes modal
+    const [openPlay, setOpenPlay] = useState(false);
     const handleOpenPlay = () => setOpenPlay(true);
     const handleClosePlay = () => setOpenPlay(false);
 
@@ -24,6 +29,7 @@ const Home = ()=>{
         <div >
             <Nav active={page} />
             <div className='body'>
+                {/* displaying create new quiz card */}
                 {/* eslint-disable-next-line */}
                 <a href="#">
                     <div className='create' onClick={handleOpen}>
@@ -37,12 +43,13 @@ const Home = ()=>{
                     </div>
                 </a>
 
+                {/* Question type selection modal */}
                 <Modal
                     open={open}
                     onClose={handleClose}
                     aria-labelledby="modalH-title"
                     aria-describedby="modalH-description"
-                >
+                    >
                     <div className='modalH'>
                         <div id='modalH-title'>
                             <span>Select Question Type</span> 
@@ -72,10 +79,11 @@ const Home = ()=>{
                 </Modal>
 
 
-                <Link to='/quizes'>
-                    <div className='my-quizesH'>
+                {/* displaying a card to open created quiz list */}
+                <Link to='/quizzes'>
+                    <div className='my-quizzesH'>
                         <div className='b-image-container'>
-                            <img src={quizes} alt="" className='b-image-quize'/>
+                            <img src={quizzes} alt="" className='b-image-quiz'/>
                         </div>
                         
                         <div className='c-text'> 
@@ -84,18 +92,20 @@ const Home = ()=>{
                     </div>
                 </Link>
 
+                {/* displaying a card to open playable quizzes modal*/}
                 {/* eslint-disable-next-line */}
                 <a href="#">
-                <div className='play' onClick={handleOpenPlay}>
-                    <div className='b-image-container'>
-                        <img src={play} alt="" className='b-image-play'/>
+                    <div className='play' onClick={handleOpenPlay}>
+                        <div className='b-image-container'>
+                            <img src={play} alt="" className='b-image-play'/>
+                        </div>
+                        
+                        <div className='c-text'> 
+                            Play Quiz
+                        </div>
                     </div>
-                     
-                    <div className='c-text'> 
-                        Play Quiz
-                    </div>
-                </div>
                 </a>
+                {/* Playable quizzes modal */}
                 <PlayList open={openPlay} handleClose={handleClosePlay}/>
     
             </div>

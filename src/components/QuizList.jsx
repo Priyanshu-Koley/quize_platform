@@ -1,5 +1,5 @@
 import Nav from './Nav'
-import  '../styles/QuizeList.css';
+import  '../styles/QuizList.css';
 import {useState,useEffect} from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import {toggleStatus,}  from '../service/Actions/action';
@@ -23,7 +23,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import {Button} from '@mui/material';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
-
+// code for ios style switch button as active toggle button
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) =>
@@ -76,38 +76,61 @@ const IOSSwitch = styled((props) => (
   },
 }));
 
-
-export const QuizeList = (props) => 
+// Table component displaying the quiz data
+export const QuizList = (props) =>
 {
-  
+    //  flag to toggle between modal and non-modal mode
     const isModal = Object.keys(props).length !== 0;
 
-
+    // flag to open/close delete confirmation modal
     const [openDlt, setOpenDlt] = useState(false);
+    // flag to open/close question type selection modal
     const [openCreate, setOpenCreate] = useState(false);
+    // flag to open/close edit quiz modal
     const [openEdt, setOpenEdt] = useState(false);
-    const [dltIndex, setDltIndex] = useState();
-    const [edtIndex, setEdtIndex] = useState();
+    // flag to show message if there are 0 active quizzes 
     const [showList, setShowList] = useState(false);
+
+    // store the quiz index to delete
+    const [dltIndex, setDltIndex] = useState();
+    // store the quiz index to edit
+    const [edtIndex, setEdtIndex] = useState();
+
+    // [Page 1-> Home | Page 2-> Quiz List] it is used in the navbar for highlighting the links
     const page=2;
+    // store the number of In-active quizzes
     let noOfNotActive = 0;
+    // store the number of quizzes
     let noOfQuizzes = 0;
-    const quizes = useSelector(state=>state.quizes);
+    
+    // store the quizzes from the store
+    const quizzes = useSelector(state=>state.quizzes);
+    // dispatch to dispatch any actions
     const dispatch = useDispatch();
 
-
+    // function to handle open/close of delete confirmation modal
     const handleOpenDlt = () => setOpenDlt(true);
     const handleCloseDlt = () => setOpenDlt(false);
     
+    // function to handle open/close of edit modal
     const handleOpenEdt = () => setOpenEdt(true);
-    const handleCloseEdt = () => setOpenEdt(false);
-
+    const handleCloseEdt = (event,reason) => 
+    {
+      if(((reason) === "backdropClick") || ((reason) === "escapeKeyDown"))
+        return;
+      setOpenEdt(false);
+    }
+    
+    // function to handle open/close of question type selection modal
     const handleOpenCreate = () => setOpenCreate(true);
     const handleCloseCreate = () => setOpenCreate(false);
-    noOfQuizzes=quizes.length;
-    useEffect(()=>{
-      quizes.forEach((quize)=>{
-        if(!quize.status)
+
+    // setting noOfQuizzes and noOfNotActive and ShowList to true/false on 1st render
+	noOfQuizzes=quizzes.length;
+    useEffect(()=>
+    {
+      quizzes.forEach((quiz)=>{
+        if(!quiz.status)
         noOfNotActive++;
       })
       if(isModal)
@@ -127,119 +150,142 @@ export const QuizeList = (props) =>
       }
        // eslint-disable-next-line
     },[]);
-    return (
-      <div className='quizes-page'>
-        <Nav  active={isModal?'0':page}/>
-        <div className={isModal?"hide":"quize-top-container"}>
-          <div className='quize-top'>
-            <div className='quize-head'>My Quizzes</div>
-              <div className='create-quize-link' onClick={handleOpenCreate}>
-                Create New Quiz
-              </div>
-            <Modal
-              open={openCreate}
-              onClose={handleCloseCreate}
-              aria-labelledby="modal-title"
-              aria-describedby="modal-description"
-            >
-            <div className='modalH'>
-                <div id='modalH-title'><span>Select Question Type</span> <button onClick={handleCloseCreate}><CloseIcon/></button></div>
-                <div id='modalH-description'>
-                    <Link to='/mcq-single'>
-                        <button className='types' value='1'>
-                            <span>MCQ</span> (Single Correct)
-                        </button>
-                    </Link>
-                    <button className='types' value='2'>
-                        <span>MCQ</span> (Multi Correct)
-                    </button>
-                    <button className='types' value='3'>
-                        <span>Short Answer</span> (with two words)
-                    </button>
-                    <button className='types' value='4'>
-                        <span>Description</span> (with 2 or 4 sentences)
-                    </button>
 
-                </div>
+    return (
+      <div className='quizzes-page'>
+
+        <Nav  active={isModal?'0':page}/>
+
+        <div className={isModal?"hide":"quiz-top-container"}>
+          <div className='quiz-top'>
+            <div className='quiz-head'>
+              My Quizzes
             </div>
-                </Modal>
+            <div className='create-quiz-link' onClick={handleOpenCreate}>
+              Create New Quiz
+            </div>
           </div>
         </div>
         
         <div className={isModal?"table-container-modal":"table-container"}>
-        {noOfQuizzes===0?<div className='empty-quizes'>No quizzes to show , Please create one first</div>:
-        !showList?<div className='empty-quizes'>No quizzes are ACTIVE to Play</div>:
-          <TableContainer component={Paper} className="table-modal" >
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell sx={{fontFamily:"BrandonGrotesque-Bold",fontSize: '25px'}}>Quiz No.</TableCell>
-                  <TableCell align="left" sx={{fontFamily:"BrandonGrotesque-Bold",fontSize: '25px'}}>Title</TableCell>
-                  <TableCell align="left" sx={{fontFamily:"BrandonGrotesque-Bold",fontSize: '25px'}} className={isModal?"hide":""} >Status</TableCell>
-                  <TableCell align="left" sx={{fontFamily:"BrandonGrotesque-Bold",fontSize: '25px'}}>Created on</TableCell>
-                  <TableCell align="left" sx={{fontFamily:"BrandonGrotesque-Bold",fontSize: '25px'}}>Actions</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {quizes.map((quize,i) => {
-                  return (
-                    <TableRow
-                      key={i}
-                      className={quize.status?"":isModal?"hide":"inactive"}
-                    >
-                    
-                    <TableCell align="left" sx={{fontFamily:"BrandonGrotesque-Bold",fontSize: '20px'}}>{i+1}</TableCell>
-                    <TableCell align="left" sx={{fontFamily:"BrandonGrotesque-Bold",fontSize: '20px'}}>{quize.title}</TableCell>
-                    <TableCell align="left" sx={{display:"flex",alignItems:"center",fontFamily:"BrandonGrotesque-Bold",fontSize: '20px'}} className={isModal?"hide":""}>
-                      <span className='status' style={{fontSize: '20px'}}>{quize.status?"Active":"Inactive"}</span>
-                        <span>
-                        {<IOSSwitch 
-                          sx={{ m: 1 }}
-                          checked={quize.status}
-                          onChange={async (e)=>{
-                            dispatch(toggleStatus(e.target.checked, i));
-                            // const stats=[...status];
-                            // stats.splice(i,1,e.target.checked);
-                            // setStatus(stats)
-                          }} />
-                        }
-                        </span>
-                      </TableCell>
-                    <TableCell align="left" sx={{fontFamily:"BrandonGrotesque-Bold",fontSize: '20px'}}>{quize.date}</TableCell>
-                    <TableCell align="left" sx={{fontFamily:"BrandonGrotesque-Bold",fontSize: '20px'}}>
-                      
-                      <Link to="/play" state={{id:i}}>
-                        <button title='Play' className={!quize.status?"hide":"actions"}>
-                          <PlayCircleOutlineIcon  sx={{color:"green"}}/>
-                        </button>
-                      </Link>
+        {/* If no of quizzes is 0 then display  " No quizzes to show , Please create one first "*/}
+        {/* Else if showList is true then display the list of quizzes else display " No quizzes are ACTIVE to Play " */}
+        {
+          noOfQuizzes===0 ?
+          <div className='empty-quizzes'>
+            No quizzes to show , Please create one first
+          </div>
+          :
+            !showList ?
+            <div className='empty-quizzes'>
+              No quizzes are ACTIVE to Play
+            </div>
+            :
+              <TableContainer component={Paper} className="table-modal" >
+                <Table>
 
-                      <button title='Edit' className={isModal?"hide":"actions"} id='editBtn' onClick={()=>{
-                        handleOpenEdt();
-                        setEdtIndex(i);
-                        }}>
-                        <BorderColorOutlinedIcon sx={{color:"green"}}/>
-                      </button>
-                      
-                      <button title='Delete' className={isModal?"hide":"actions"} onClick={()=>{
-                        handleOpenDlt();
-                        setDltIndex(i);
-                      }}>
-                        <DeleteOutlinedIcon  sx={{color:"crimson"}}/>
-                      </button>
-                      
-                      
-                    </TableCell>
-                  </TableRow>
-                  )})}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell sx={{fontFamily:"BrandonGrotesque-Bold",fontSize: '25px'}}>Quiz&nbsp;No.</TableCell>
+                      <TableCell align="left" >Title</TableCell>
+                      <TableCell align="left" className={isModal?"hide":""} >Status</TableCell>
+                      <TableCell align="left" >Modified&nbsp;on</TableCell>
+                      <TableCell align="left" >Actions</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  
+                  <TableBody>
+                    {quizzes.map((quiz,index) => {
+                      return (
+                        <TableRow
+                          key={index}
+                          className={quiz.status?"":isModal?"hide":"inactive"}
+                        >
+                        
+                        <TableCell align="left" >{index+1}</TableCell>
+                        <TableCell align="left" >{quiz.title}</TableCell>
+                        <TableCell align="left" sx={{display:"flex",alignItems:"center",fontFamily:"BrandonGrotesque-Bold",fontSize: '20px'}} className={isModal?"hide":"status-container"}>
+                          <span className='status' >{quiz.status?"Active":"Inactive"}</span>
+                          <span>
+                            {
+                              <IOSSwitch 
+                                sx={{ m: 1 }}
+                                checked={quiz.status}
+                                onChange={async (e)=>{
+                                  dispatch(toggleStatus(e.target.checked, index));
+                                }} />
+                            }
+                          </span>
+                        </TableCell>
+                        <TableCell align="left" >{quiz.date}</TableCell>
+                        <TableCell align="left" >
+                          {/* Play icon btn */}
+                          <Link to="/play" state={{id:index}}>
+                            <button title='Play' className={!quiz.status?"fade":"actions"} disabled={!quiz.status}>
+                              <PlayCircleOutlineIcon  sx={{color:"green"}}/>
+                            </button>
+                          </Link>
+
+                          {/* Edit icon btn to open edit modal */}
+                          <button title='Edit' className={isModal?"hide":"actions"} id='editBtn' onClick={()=>{
+                            handleOpenEdt();
+                            setEdtIndex(index);
+                            }}>
+                            <BorderColorOutlinedIcon sx={{color:"green"}}/>
+                          </button>
+                          
+                          {/* Delete icon btn to open delete confirmation modal */}
+                          <button title='Delete' className={isModal?"hide":"actions"} onClick={()=>{
+                            handleOpenDlt();
+                            setDltIndex(index);
+                          }}>
+                            <DeleteOutlinedIcon  sx={{color:"crimson"}}/>
+                          </button>
+
+                        </TableCell>
+                      </TableRow>
+                      )})}
+                  </TableBody>
+                </Table>
+              </TableContainer>
         }
         </div>
+
+        {/* Modal for question type selection */}
+        <Modal
+          open={openCreate}
+          onClose={handleCloseCreate}
+          aria-labelledby="modal-title"
+          aria-describedby="modal-description"
+        >
+          <div className='modalH'>
+              <div id='modalH-title'>
+                <span>Select Question Type</span> 
+                <button onClick={handleCloseCreate}><CloseIcon/></button>
+              </div>
+              <div id='modalH-description'>
+                  <Link to='/mcq-single'>
+                      <button className='types' value='1'>
+                          <span>MCQ</span> (Single Correct)
+                      </button>
+                  </Link>
+                  <button className='types' value='2'>
+                      <span>MCQ</span> (Multi Correct)
+                  </button>
+                  <button className='types' value='3'>
+                      <span>Short Answer</span> (with two words)
+                  </button>
+                  <button className='types' value='4'>
+                      <span>Description</span> (with 2 or 4 sentences)
+                  </button>
+              </div>
+          </div>
+        </Modal>
+
+        {/* Modal for Editing the quiz */}
         <Modal
           open={openEdt}
-          onClose={handleCloseEdt}
+          onClose={(event, reason)=>handleCloseEdt(event,reason)}
           aria-labelledby="modal-title-edt"
           aria-describedby="modal-description-edt"
           >
@@ -247,6 +293,8 @@ export const QuizeList = (props) =>
               <CreateMcqSingle editId={edtIndex} handleCloseEdt={handleCloseEdt}/>
             </div>
         </Modal>
+
+        {/* Modal for delete confirmation */}
         <Modal
           open={openDlt}
           onClose={handleCloseDlt}
@@ -262,7 +310,7 @@ export const QuizeList = (props) =>
             </div>
             <div id='modal-description-dlt'>
                 <div>
-                  Deleting this quize will result in loosing the quize permanently and is not recoverable
+                  Deleting this quiz will result in loosing the quiz permanently and is not recoverable
                 </div>
                 <div>
                 <Button
@@ -299,10 +347,11 @@ export const QuizeList = (props) =>
                 </div>
             </div>
         </div>
-      </Modal>
-    </div>
-  )
+        </Modal>
+      
+      </div>
+    )
 }
 
 
-export default QuizeList
+export default QuizList

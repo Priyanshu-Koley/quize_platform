@@ -1,23 +1,29 @@
+const getDate = ()=>
+{
+    // creating a date object
+    const date = new Date();
+    // month array
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let hour = date.getHours();
+    let ampm = "AM";
+    let minutes = date.getMinutes();
+    if (minutes < 10)
+    {
+        minutes = '0' + minutes;
+    }
+    if (hour > 12)
+    {
+        hour -= 12;
+        ampm = "PM";
+    }
+    // creating the timestamp by adding its contents[date,month,hour,minute & AM/PM]
+    return date.getDate() + ' ' + months[date.getMonth()] + ", " + hour + ":" + minutes + " " + ampm;
+}
 // action to add a new question in the store
 const addQ = (qTitle, qDesc, qQuestions) => 
 {
-    // creating the date & time contents for timestamp
-    const date = new Date();
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let hr = date.getHours();
-    let ampm = "AM";
-    let mins = date.getMinutes();
-    if (mins < 10) 
-    {
-        mins = '0' + mins;
-    }
-    if (hr > 12) 
-    {
-        hr -= 12;
-        ampm = "PM";
-    }
-    // creating the timestamp by adding its contents
-    const curDate = date.getDate() + ' ' + months[date.getMonth()] + ", " + hr + ":" + mins + " " + ampm;
+    // getting the timestamp
+    const curDate = getDate();
     // returning the ADD_Q action object
     return {
         type: "ADD_Q",
@@ -31,7 +37,8 @@ const addQ = (qTitle, qDesc, qQuestions) =>
     }
 }
 //action to toggle the status between ACTIVE & INACTIVE in the store
-const toggleStatus = (stat, i) => {
+const toggleStatus = (stat, i) =>
+{
     // returning the TGL_STAT action object with new status and the quiz index
     return {
         type: "TGL_STAT",
@@ -42,7 +49,8 @@ const toggleStatus = (stat, i) => {
     }
 }
 //action to delete a question from the store
-const dltQ = (i) => {
+const dltQ = (i) =>
+{
     // returning the DLT_Q action object with payload as the index of Quiz to delete
     return {
         type: "DLT_Q",
@@ -51,22 +59,10 @@ const dltQ = (i) => {
 }
 
 //action to edit/update a question of the store
-const editQ = (qTitle, qDesc, qQuestions, id) => {
-    const date = new Date();
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let hr = date.getHours();
-    let ampm = "AM";
-    let mins = date.getMinutes();
-    if (mins < 10) {
-        mins = '0' + mins;
-    }
-    if (hr > 12) {
-        hr -= 12;
-        ampm = "PM";
-    }
-    // updating the timestamp with current date & time
-    const curDate = date.getDate() + ' ' + months[date.getMonth()] + ", " + hr + ":" + mins + " " + ampm;
-    
+const editQ = (qTitle, qDesc, qQuestions, status, id) =>
+{
+    // getting the current timestamp
+    const curDate = getDate();
     // returning the EDIT_Q action object
     return {
         type: "EDIT_Q",
@@ -74,7 +70,7 @@ const editQ = (qTitle, qDesc, qQuestions, id) => {
             title: qTitle,
             desc: qDesc,
             que: qQuestions,
-            status: true,
+            status: status,
             date: curDate
         },
         editId: id,

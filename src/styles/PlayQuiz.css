@@ -27,7 +27,7 @@
 .play-container{
     width: 70%;
     background-color: #ffffff;
-    margin: 20px 0px 20px 0px ;
+    margin: 20px 0 20px 0;
     padding: 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
@@ -36,7 +36,7 @@
 .score-card{
     width: 50%;
     background-color: #ffffff;
-    margin: 20px 0px 20px 0px ;
+    margin: 20px 0 20px 0;
     padding: 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
@@ -110,6 +110,7 @@
     display: flex;
     justify-content: center;
 }
+
 .wish-img{
     width: 200px;
 }
@@ -136,9 +137,9 @@
 label.radio-card {
 	cursor: pointer;
 }
+
 label.radio-card .card-content-wrapper {
-	background: #fff;
-	border-radius: 5px;
+    border-radius: 5px;
 	padding: 15px;
 	box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.04);
 	transition: 300ms linear;
@@ -192,4 +193,108 @@ label.radio-card input[type='radio']:checked + .card-content-wrapper .check-icon
 label.radio-card input[type='radio']:focus + .card-content-wrapper .check-icon {
 	box-shadow: 0 0 0 4px #bdf1e4;
 	border-color: #43C9A6;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .play-container{
+        width: 95%;
+        padding: 10px;
+    }
+    .play-title{
+        font-size: x-large;
+    }
+    .play-desc{
+        overflow-x: auto;
+    }
+    .play-desc::-webkit-scrollbar,.play-question::-webkit-scrollbar,.play-option::-webkit-scrollbar {
+        height: 3px;
+    }
+    .play_title_started{
+        font-size: x-large;
+    }
+    .play-question{
+        font-size:x-large;
+        overflow-x: auto;
+    }
+    .play-option{
+        overflow-x: auto;
+    }
+
+    .score-card{
+        width: 90%;
+        padding: 15px;
+    }
+    .congrats{
+        overflow: auto;
+        width: 670px;
+    }
+
+
+}
+@media only screen and (max-width: 427px) {
+    .score-card{
+        width: 90%;
+        padding: 15px;
+    }
+    .congrats{
+        overflow: auto;
+        width: 360px;
+    }
+    .congrats::-webkit-scrollbar{
+        height: 3px;
+    }
+}
+@media only screen and (max-width: 377px) {
+
+    label.radio-card .check-icon {
+        height: 20px;
+        width: 23px;
+    }
+
+    .score-card{
+        width: 90%;
+        padding: 15px;
+    }
+    .congrats{
+        overflow: auto;
+        width: 300px;
+    }
+    .congrats::-webkit-scrollbar{
+        height: 3px;
+    }
+}
+@media only screen and (max-width: 325px) {
+    .play-container{
+        width: 95%;
+        padding: 10px;
+    }
+    .play-title{
+        font-size: large;
+    }
+    .play-desc{
+        overflow-x: scroll;
+    }
+    label.radio-card .check-icon {
+        height: 18px;
+        width: 21px;
+    }
+
+    .score-card{
+        width: 90%;
+        padding: 15px;
+    }
+    .congrats{
+        overflow: auto;
+        width: 260px;
+    }
+    .congrats::-webkit-scrollbar{
+        height: 3px;
+    }
+    .score-card button{
+        width: 100px;
+        font-size: small;
+        padding: 10px;
+    }
 }

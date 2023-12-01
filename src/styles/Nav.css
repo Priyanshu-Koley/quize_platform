@@ -10,31 +10,29 @@
     align-items: center;
     font-size: 25px;
     width: 100%;
-    /* box-shadow: 0 2px 2px -2px rgba(0,0,0,.2); */
-    /* box-shadow:  1px 1px 10px rgb(63, 124, 177); */
     box-shadow:  1px 1px 10px rgba(0, 0, 0, 0.682);
-    /* margin-bottom:20px ; */
 }
 .menu{
     font-weight: 500;
     display: flex;
+    justify-content: space-between;
+    width: 500px;
 }
 .home{
     color: black;
 }
 .home-link{
     text-decoration: none;
-    margin-right: 50px;
 }
-.quizes-link{
+.quizzes-link{
     text-decoration: none;
-    margin-right: 50px;
 }
 .play-link{
+    background-color: transparent;
     text-decoration: none;
     cursor: pointer;
 }
-.quizes{
+.quizzes{
     color: black;
 }
 .active{
@@ -42,35 +40,112 @@
     font-weight: 700;
 }
 
-@media only screen and (max-width: 600px) {
+/* Playable quiz modal */
+.modalPlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background-color:rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    overflow-y: scroll;
+}
+#modalPlay-title{
+    margin-left: 10px;
+    margin-right: 0;
+    
+    display: flex;
+    justify-content: space-between;
+}
+#modalPlay-title button{
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    margin: 0 0 auto auto;
+    background-color: transparent;
+}
+#modalPlay-title span{
+    padding-top: 10px;
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.table-container-modal table td{
+    font-size: 20px;
+    font-family: "BrandonGrotesque-Bold";
+}
+.table-container-modal table th{
+    font-size: 25px;
+    font-family: "BrandonGrotesque-Bold";
+}
+
+@media only screen and (max-width: 768px) {
     .nav{
         font-size:20px;
     }
     .logo{
         width:90px;
     }
-    .home-link{
-        margin-left: 25px;
-        margin-right: 30px;
+    .menu{
+        width: 400px;
+    }
+
+    
+    .modalPlay{
+        width: 95%;
+    }
+    #modalPlay-title span{
+        font-size:x-large;
+    }
+
+    .table-container-modal table td{
+        font-size: 15px;
+        font-family: "BrandonGrotesque-Bold";
+    }
+    .table-container-modal table th{
+        font-size: 18px;
+        font-family: "BrandonGrotesque-Bold";
     }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 426px) {
     .nav{
-        font-size: 15px;
+        font-size:15px;
+        padding: 5px 25px 5px 25px;
+    }
+    .logo{
+        width:80px;
+    }
+    .menu{
+        width: 240px;
+    }
+}
+@media only screen and (max-width: 376px) {
+    .nav{
+        font-size: 13px;
+        padding: 5px 20px 5px 20px;
     }
     .logo{
         width:70px;
     }
-    .home-link{
-        margin-left: 20px;
-        margin-right: 20px;
+    .menu{
+        width: 200px;
     }
 }
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 320px) {
     .nav{
-        font-size: 10px;
+        font-size: 11px;
+        padding: 5px 20px 5px 20px;
     }
     .logo{
         width:60px;
+    }
+    .menu{
+        width: 150px;
     }
 }
