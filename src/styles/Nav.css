@@ -53,7 +53,7 @@
     padding: 10px;
     border: 0;
     outline: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 #modalPlay-title{
     margin-left: 10px;

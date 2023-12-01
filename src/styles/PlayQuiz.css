@@ -274,7 +274,7 @@ label.radio-card input[type='radio']:focus + .card-content-wrapper .check-icon {
         font-size: large;
     }
     .play-desc{
-        overflow-x: scroll;
+        overflow-x: auto;
     }
     label.radio-card .check-icon {
         height: 18px;

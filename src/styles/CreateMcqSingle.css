@@ -272,7 +272,7 @@
 #modal-edt{
     width: 70%;
     height: 80%;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 0;
     
     position: absolute;
@@ -287,7 +287,7 @@
 #mobile-modal-edt{
 
     height: 80%;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 0;
 
     position: absolute;

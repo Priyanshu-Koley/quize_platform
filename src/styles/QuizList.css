@@ -77,7 +77,7 @@
     align-items: center;
 }
 .status-container{
-    height: 96px;
+    min-height: 96px;
 }
 .actions{
     border: none;
